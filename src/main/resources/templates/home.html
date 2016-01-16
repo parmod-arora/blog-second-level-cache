@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Hello Spring Boot!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:unless="${#lists.isEmpty(employees)}">
+		<h2>List of Employees</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>salary</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="emp : ${employees}">
+					<td><a th:href="@{/employee/}+${emp.id}" th:text="${{emp.id}}">1</a></td>
+					<td th:text="${{emp.name}}">Parmod</td>
+					<td th:text="${{emp.salary}}">Parmod</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<h2>Add new Employee</h2>
+		<form action="#" th:action="@{/employee/add}" th:object="${employee}"
+			method="post">
+			<p>
+				<input required="true" type="hidden" th:field="*{id}" />
+			</p>
+			<p>
+				Emp Name: <input required="true" type="text" th:field="*{name}" />
+			</p>
+			<p>
+				Emp Salary: <input required="true" type="text" th:field="*{salary}" />
+			</p>
+			<p>
+				<input type="submit" value="Submit" /> 
+			</p>
+		</form>
+	</div>
+
+
+</body>
+</html>

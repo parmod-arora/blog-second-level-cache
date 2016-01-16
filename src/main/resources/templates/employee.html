@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Hello Spring Boot!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<h2>Add new Employee</h2>
+		<form action="#" th:action="@{/employee/add}" th:object="${employee}"
+			method="post">
+			<p>
+				<input required="true" type="hidden" th:field="*{id}" />
+			</p>
+			<p>
+				Emp Name: <input required="true" type="text" th:field="*{name}" />
+			</p>
+			<p>
+				Emp Salary: <input required="true" type="text" th:field="*{salary}" />
+			</p>
+			<p>
+				<input type="submit" value="update" /> 
+			</p>
+		</form>
+	</div>
+
+
+</body>
+</html>
